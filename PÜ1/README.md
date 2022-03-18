@@ -5,7 +5,7 @@ Werkzeug zur Vereinfachung und Automatisierung von Leistungstests, basierend auf
 
 ## Installation
 
-(Was muss man tun, bevor man das Werkzeug nutzen kann?) HALLO HALLO TEST
+(Was muss man tun, bevor man das Werkzeug nutzen kann?)
 
 t.b.d.
 

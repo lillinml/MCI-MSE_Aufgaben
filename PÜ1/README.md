@@ -19,7 +19,7 @@ Start über Kommandozeile
 Daten müssen wie wie folgt vorliegen?
 
 ## Contributing
-**(Wer ist im Team Name + Matrikelnummer + Email)**
+**(Lilli Niemöller / Lener Johannes +  52111921 / 52110060 + NL4090@mci4me.at / LJ3199@mci4me.at)**
 
 - [Julian Huber - 123](julian.huber@mci.edu)
 

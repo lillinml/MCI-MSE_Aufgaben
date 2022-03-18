@@ -1,5 +1,5 @@
 # Leistungsdiagnostik
-**(kurze Beschreibung des Ziels)**
+**(Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers)**
 
 Werkzeug zur Vereinfachung und Automatisierung von Leistungstests, basierend auf EKG-Daten und Leistungswerten und Patient:innen-Daten
 

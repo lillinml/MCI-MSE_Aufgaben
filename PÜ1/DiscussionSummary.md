@@ -45,13 +45,14 @@ Das Ergometer liefert richtige Daten. Der Sportler sollte den Maximalpuls nicht 
 ### Design and implementation constraints
 
 
+
 ## Risks
 
-...
+
 
 ## Known future enhancements
 
-...
+
 
 ## References
 

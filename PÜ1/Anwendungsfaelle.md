@@ -7,7 +7,7 @@
 ## Tabellen
 
 
-### UC 2.2. - Auswertung der Leistungsdaten
+### UC 2.2. - Vorverarbeitung der Daten
 
 
 |                                | Erklärung                                                                                                                                                                               | Beispiel                                                                                                                                         |

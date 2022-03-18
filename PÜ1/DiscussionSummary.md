@@ -54,11 +54,13 @@ Das Ergometer liefert richtige Daten. Der Sportler sollte den Maximalpuls nicht 
 
 ## Risks
 
-
+Eingabewerte des Ergometers sind falsch und können nicht auf Richtigkeit überprüft werden.
+Werte können falsch ausgewertet werden und dadurch können falsche Diagnosen erstellt werden.
 
 ## Known future enhancements
 
-
+Auswertungsfehler ausbessern, Richtigkeit der Eingabedaten kontrollieren.
+Erfahrungen aus Anwendungen mit einfließen lassen.
 
 ## References
 
@@ -66,4 +68,5 @@ Das Ergometer liefert richtige Daten. Der Sportler sollte den Maximalpuls nicht 
 
 ## Open, unresolved or TBD issues
 
-...
+Absprache mit Kunden 
+Visuelle Anforderungen

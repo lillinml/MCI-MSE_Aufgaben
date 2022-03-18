@@ -2,17 +2,20 @@
 
 ### Purpose of project
 
-...
+Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms
 
 ### Scope of project
 
-Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms
+Daten eines Ergometers sollen importiert, vorbearbeitet, analysiert, ausgewertet, visulasiert und abgespeichert werden.
 
 ### Other background information
 
 ...
 
 ## Perspectives
+
+Erfolgreiche Abschluss des Projektes und Übergabe an den Kunden.
+
 ### Who will use the system?
 
 Diagnostiker:innen
@@ -21,8 +24,11 @@ Diagnostiker:innen
 
 Die Sportler:innen in Verbindung mit dem Ergometer
 
-
 ## Project Objectives
+
+Erfolgreiche Auswertung und Visualisierung der Eingabedagten.
+Einfache Darstellung der Daten um schnelle und genaue Diagnosen zu erstellen.
+
 ### Known business rules
 
 Name, technische ID und Geburtsdatum der getesteten Personen soll gespeichert werden.

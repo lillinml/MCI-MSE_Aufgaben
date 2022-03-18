@@ -1,5 +1,7 @@
 ## Project background
 
+Aufgabenstellung in Programmierübung 2 TEAM 11
+
 ### Purpose of project
 
 Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms
@@ -10,7 +12,8 @@ Daten eines Ergometers sollen importiert, vorbearbeitet, analysiert, ausgewertet
 
 ### Other background information
 
-...
+Team: Lilli Niemöller, Lener Johannes
+Auftraggeber: MCI Innsbruck
 
 ## Perspectives
 

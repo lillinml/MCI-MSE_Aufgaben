@@ -6,7 +6,7 @@
 
 ### Scope of project
 
-...
+Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms
 
 ### Other background information
 

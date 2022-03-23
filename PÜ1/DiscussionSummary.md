@@ -17,7 +17,7 @@ Auftraggeber: MCI Innsbruck
 
 ## Perspectives
 
-Erfolgreiche Abschluss des Projektes und Übergabe an den Kunden.
+Erfolgreicher Abschluss des Projektes und Übergabe an den Kunden.
 
 ### Who will use the system?
 

@@ -10,8 +10,8 @@
 #%% UC 2.3 Analysen der Daten auf Abbruchkriterium
 # 
 
-#%% UC 2.4 Erstellen einer Zusammenfassung
-# 
+#%% UC 2.4 Erstellen einer Zusammenfassung 
+#
 
 #%% UC 2.5 Visualisierung der Daten
 # 

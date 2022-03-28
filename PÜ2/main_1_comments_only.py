@@ -15,13 +15,13 @@
 # Herausgefilterte Daten zusammenfassen
 # 
 
-#%% UC 2.5 Visualisierung der Daten
+# UC 2.5 Visualisierung der Daten
 #  einen Graphen erstellen mit matplotlib oder eine Textdatei
 
-#%% UC 2.6 Manuelle Eingabe eines Abbruchkriteriums
+# UC 2.6 Manuelle Eingabe eines Abbruchkriteriums
 # individuell bei Ausnahmen die Daten heraussortieren
 
-#%% UC 2.7 Speichern der Daten
+# UC 2.7 Speichern der Daten
 #  Sicherung der fertigen Daten
 # An Auftraggeber/Kunde weitergeben
 

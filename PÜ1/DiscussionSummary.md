@@ -49,7 +49,21 @@ Aus diesem muss die Herzrate bestimmt werden.
 
 ### Assumptions and dependencies
 
-Das Ergometer liefert richtige Daten. Der Sportler sollte den Maximalpuls nicht überschreiten
+Die 6 Input Files enthalten 2 verschiedene Auswertungen von jeweils 3 Testduchgängen.
+Zu jeder "ecg_data_subject" Datei gehört ein "power_data" File. 
+
+Das "power_data" File enthält eine Auswertung über den Watt Bereich des Ergometers. Die aktuelle Leistung wurde mit 1 Hz gemessen, da 180 Messergebnisse auf 180 Sekunden vorhanden sind.
+Das "ecg_data_subject" File enthält die Amplitudenwerte der Herzfrequenzmessung. Diese ergeben einen Sinus-Verlauf. Hier sind 180000 Messwertde auf 180 Sekunden vorhanden. Dies entspricht einer Frequenz von 1000Hz.
+
+Die Leistungsmessung/EKG-Messung wurde in 3 verschiedenen Leistungsstufen durchgeführt.
+
+1- 100 Watt +-10%
+2- 200 Watt +-10%
+3- 300 Watt +-10%
+
+Paralell zu der erbrachten Leistung des Patienten wurde die Herzfrequenz gemessen. Wobei die Zeitliche Auflösung der Herzfrequenzmessung um den Faktor 1000 Höher ist, da diese sich auch schneller ändert als die Leistung die der Patient aufbringt.
+
+Die Daten wurden mithilfe von Matplot grafisch dargestellt.
 
 ### Design and implementation constraints
 

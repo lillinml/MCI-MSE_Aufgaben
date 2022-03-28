@@ -6,6 +6,7 @@
 
 # UC 2.2 Vorverarbeiten der Daten
 # Fehler beseitigen
+# Entscheiden, welche Werte von Bedeutung sind
 
 
 # UC 2.3 Analysen der Daten auf Abbruchkriterium
@@ -13,15 +14,15 @@
 
 # UC 2.4 Erstellen einer Zusammenfassung 
 # Herausgefilterte Daten zusammenfassen
-# 
+# Einen Überblick erstellen, welche Werte gefunden und benutzt wurden
 
 # UC 2.5 Visualisierung der Daten
-#  einen Graphen erstellen mit matplotlib oder eine Textdatei
+#  einen Graphen mit matplotlib oder eine Textdatei erstellen
 
 # UC 2.6 Manuelle Eingabe eines Abbruchkriteriums
-# individuell bei Ausnahmen die Daten heraussortieren
+# Individuell bei Ausnahmen die Daten heraussortieren
 
 # UC 2.7 Speichern der Daten
-#  Sicherung der fertigen Daten
+# Sicherung der fertigen Daten
 # An Auftraggeber/Kunde weitergeben
 

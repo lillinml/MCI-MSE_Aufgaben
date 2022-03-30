@@ -4,7 +4,7 @@ Aufgabenstellung in Programmierübung 2 TEAM 11
 
 ### Purpose of project
 
-Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms
+Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrokardiogramms
 
 ### Scope of project
 
@@ -23,9 +23,13 @@ Erfolgreicher Abschluss des Projektes und Übergabe an den Kunden.
 
 Diagnostiker:innen
 
+*und weiteren Benutzer - YS*
+
 ### Who can provide input about the system?
 
 Die Sportler:innen in Verbindung mit dem Ergometer
+
+*Hier geht es um Hilfestellung bei Problemen, also beispielsweise um den Softwareentwickler -YS*
 
 ## Project Objectives
 

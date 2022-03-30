@@ -26,5 +26,6 @@
 | Hinweise                       | Kurze Erklärungen zum besseren Verständnis, Hinweise zu Nebeneffekten, Mengengerüsten soweit erforderlich und alles andere, das nicht weiter oben dargestellt werden kann.              | keine                                                                                                                                            |
 | Änderungsgeschichte            | Versionierung, Name des Autors, Datum                                                                                                                                                   | 18.03.2022 - Lilli Niemöller, Johannes Lener                                                                                                                  |
 |                                |                                                                                                                                                                                         |                                                                                                                                                  |
+*Gut! -YS*
 
 ### Weitere sind zu befüllen

@@ -1,7 +1,9 @@
 # Leistungsdiagnostik
-**(Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms)**
+Entwicklung einer Software zur Leistungsdiagnostik in Bezug auf ausgewertete Daten eines Ergometers und auswerten der erbrachten Leistung sowie die Aufzeichnung des Elektrodiagramms
 
 Werkzeug zur Vereinfachung und Automatisierung von Leistungstests, basierend auf EKG-Daten und Leistungswerten und Patient:innen-Daten
+
+*Fett und in Klammern war eigentlich nur ein Platzhalter, ansonsten gut. -YS*
 
 ## Installation
 
@@ -19,9 +21,9 @@ Start über Kommandozeile
 Daten müssen wie wie folgt vorliegen?
 
 ## Contributing
-**(Lilli Niemöller / Lener Johannes +  52111921 / 52110060 + NL4090@mci4me.at / LJ3199@mci4me.at)**
+Lilli Niemöller / Lener Johannes +  52111921 / 52110060 + NL4090@mci4me.at / LJ3199@mci4me.at
 
-- [Julian Huber - 123](julian.huber@mci.edu)
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

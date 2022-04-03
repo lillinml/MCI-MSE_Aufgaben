@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="mAI5d0fx5D63MH5WcJRj" name="Page-1">
-        <mxGraphModel dx="1892" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="932" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -54,17 +54,11 @@
                         <mxPoint x="315" y="180" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="UC 1.0 Ergometer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="15" value="Ergometer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="175" y="555" width="115" height="25" as="geometry"/>
                 </mxCell>
                 <mxCell id="16" value="Seriennummer" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="175" y="580" width="115" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="17" value="Display" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-55" y="555" width="165" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="19" value="&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;Visualisierung ()&lt;/span&gt;&lt;/div&gt;Geschwindigkeitsangabe ()&lt;br&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;Pulsangabe ()&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-55" y="585" width="165" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" parent="1" source="15" target="6" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -90,9 +84,6 @@
                 </mxCell>
                 <mxCell id="35" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;shadow=0;" vertex="1" parent="1">
                     <mxGeometry x="165" y="100" width="120" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="43" value="" style="shape=crossbar;whiteSpace=wrap;html=1;rounded=1;shadow=0;" vertex="1" parent="1">
-                    <mxGeometry x="-55" y="575" width="165" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="Start()&lt;br&gt;Stop()" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
                     <mxGeometry x="175" y="620" width="115" height="50" as="geometry"/>
@@ -191,12 +182,6 @@
                     <mxGeometry width="160" relative="1" as="geometry">
                         <mxPoint x="320" y="1228.67" as="sourcePoint"/>
                         <mxPoint x="381.25" y="1228.67" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="98" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;" edge="1" parent="1">
-                    <mxGeometry width="160" relative="1" as="geometry">
-                        <mxPoint x="110" y="610" as="sourcePoint"/>
-                        <mxPoint x="175" y="610" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="99" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.444;exitY=-0.128;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="15">

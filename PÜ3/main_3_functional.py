@@ -2,52 +2,61 @@
 ## Überprüfen ob Dateien vorhanden sind
 # Importieren aller verwendeten Bibliotheken und packages
 import os
+from numpy import average
 import pandas as pd
 import neurokit2 as nk
 import json
 
 #%% UC 2.1 Einlesen der Daten
-#Erstellen einer Liste mit eingelesenen Tests
+## Überprüfen ob Dateien vorhanden sind und erstellen einer Liste von Tests, die zu verarbeiten sind
+
+def read_test_data():
+
     list_of_new_tests = []
-    folder_current = os.path.dirname(__file__) 
-    folder_input_data = os.path.join(folder_current, 'input_data')
- 
- #Überprüfen ob Daten vorhanden sind
-    for file in os.listdir(folder_input_data): 
-    if file.endswith(".csv"):
-        file_name = os.path.join(folder_input_data, file)
-        print(file_name)
-        subject_id = file_name.split(".")[0][-1]
-        new_ecg_data= pd.read_csv(file_name)
-## Erstellen einer Liste von Tests, die zu verarbeiten sind
+    folder_input_data = os.path.join(os.path.dirname(__file__) , 'input_data')
 
-        list_of_new_tests.append(new_ecg_data)
+    ## Überprüfen ob Dateien vorhanden sind
+    for file in os.listdir(folder_input_data):
+        
+        if file.endswith(".csv"):
+            file_name = os.path.join(folder_input_data, file)
+            print(file_name)
+            subject_id = file_name.split(".")[0][-1]
+            new_ecg_data= pd.read_csv(file_name)
 
-# Graphen erstellen
-new_ecg_data["Subject_3"].plot()
+            ## Erstellen einer Liste von Tests, die zu verarbeiten sind
+            list_of_new_tests.append(new_ecg_data)
+    
+    return list_of_new_tests
+
+list_of_new_tests = read_test_data()
 
 #%% UC 2.2 Vorverarbeiten der Daten
-
 ## Anlegen einer Zeitreihe der Herzfrequenz aus den EKG-Daten
 
-# Daten einlesen
-ekg_data=pd.DataFrame()
-ekg_data["ECG"] = new_ecg_data["Subject_3"]
+def preprocess_test_data():
+#Peaks finden, Herzschlag messen und moving average ausrechnen
 
-# Find peaks
-peaks, info = nk.ecg_peaks(ekg_data["ECG"], sampling_rate=1000)
-# Herzschlag messen
-number_of_heartbeats = peaks["ECG_R_Peaks"].sum()
-# Ausdauer
-duration_test_min = ekg_data.size/1000/60
-# Durchschnitt rechnen
-average_hr_test = number_of_heartbeats / duration_test_min
+    ekg_data = pd.DataFrame()
+    new_ecg_data = list_of_new_tests[0]
+    ekg_data["ECG"] = new_ecg_data["Subject_3"]
 
-## Calculate heart rate moving average
+    # Find peaks
+    peaks, info = nk.ecg_peaks(ekg_data["ECG"], sampling_rate=1000)
+    # Herzschlag messen
+    number_of_heartbeats = peaks["ECG_R_Peaks"].sum()
+    # Ausdauer
+    duration_test_min = ekg_data.size/1000/60
+    # Durchschnitt rechnen
+    average_hr_test = number_of_heartbeats / duration_test_min
 
-peaks['average_HR_10s'] = peaks.rolling(window=10000).mean()*60*1000
-peaks['average_HR_10s'].plot()
+    ## Calculate heart rate moving average
+    peaks['average_HR_10s'] = peaks.rolling(window=10000).mean()*60*1000
+    peaks['average_HR_10s'].plot()
 
+    return peaks,number_of_heartbeats, duration_test_min, average_hr_tests_min
+
+peaks,number_of_heartbeats, duration_test_min, average_hr_tests_min = preprocess_test_data()
 
 #%% UC 2.3 Analysieren der Daten auf Abbruch-Kriterium
 

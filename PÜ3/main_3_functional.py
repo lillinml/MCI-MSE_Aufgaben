@@ -22,7 +22,7 @@ def read_test_data():
             file_name = os.path.join(folder_input_data, file)
             print(file_name)
             subject_id = file_name.split(".")[0][-1]
-            new_ecg_data= pd.read_csv(file_name)
+            new_ecg_data = pd.read_csv(file_name)
 
             ## Erstellen einer Liste von Tests, die zu verarbeiten sind
             list_of_new_tests.append(new_ecg_data)
@@ -62,15 +62,11 @@ peaks,number_of_heartbeats, duration_test_min, average_hr_tests_min = preprocess
 
 termination = False
 
-
 ## Vergleich der Maximalen Herzfrequenz mit Alter des Patienten
-
 folder_input_data = os.path.join(folder_current, 'input_data')
 
 # Opening JSON file
-
 file_name = folder_input_data = os.path.join(folder_input_data, 'subject_3.json')
-
 f = open(file_name)
  
 # returns JSON object as
@@ -79,8 +75,8 @@ subject_data = json.load(f)
 
 # Maximum herausfinden
 maximum_hr = peaks['average_HR_10s'].max()
-
 subject_max_hr = 220 - (2022 - subject_data["birth_year"])
+
 # Wenn das Maximum erreicht ist, wird der Vorgang beendet
 if maximum_hr > subject_max_hr*0.90:
     termination = True
@@ -97,10 +93,9 @@ print("Was test terminated because exceeding HR " + str(termination))
 ## Ausgabe einer Zusammenfassung
 
 #%% UC 2.5 Visualisierung der Daten
-
 ## Öffnen der Leistungsdaten
-
 # Opening JSON file
+
 folder_input_data = os.path.join(folder_current, 'input_data')
 file_name =  os.path.join(folder_input_data, 'power_data_3.txt')
 power_data_watts = open(file_name).read().split("\n")
@@ -110,8 +105,6 @@ len(power_data_watts)
 
 # %%
 ## Erstellung eines Plots
-
-
 #peaks['average_HR_10s'].plot()
 
 peaks_downsampled = peaks[peaks.index % 1000 == 0]  
@@ -128,7 +121,6 @@ peaks_downsampled.plot()
 #peaks_downsampled["Power (Watt)"].plot()
 
 #%% UC 2.6 Manuelle Eingabe eines Abbruchkritierums
-
 ## Abfrage an Nutzer:in, ob Abgebrochen werden soll
 
 manual_termination = False
@@ -139,8 +131,6 @@ if manual_termination != False:
 
 
 #%% UC 2.7 Speichern der Daten
-
-
 # Speichern der Daten
 data = {"User ID": subject_data["subject_id"], "Reason for test termation": manual_termination, "Average Heart Rate": average_hr_test, "Maximum Heart Rate": subject_max_hr, "Test Length (s)": len(power_data_watts), "Test Power (W)": subject_data["test_power_w"], "Average Power": peaks_downsampled["Power (Watt)"].mean()}
 

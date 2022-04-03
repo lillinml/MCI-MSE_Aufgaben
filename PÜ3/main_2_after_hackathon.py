@@ -9,6 +9,7 @@ list_of_new_tests = []
 import os
 import pandas as pd
 
+# Benennen von Ordnern
 folder_current = os.path.dirname(__file__) 
 folder_input_data = os.path.join(folder_current, 'input_data')
 for file in os.listdir(folder_input_data):
@@ -22,7 +23,7 @@ for file in os.listdir(folder_input_data):
 
         list_of_new_tests.append(new_ecg_data)
 
-
+# Graphen erstellen
 new_ecg_data["Subject_3"].plot()
 
 #%% UC 2.2 Vorverarbeiten der Daten
@@ -31,16 +32,17 @@ new_ecg_data["Subject_3"].plot()
 
 import neurokit2 as nk
 
+# Daten einlesen
 ekg_data=pd.DataFrame()
 ekg_data["ECG"] = new_ecg_data["Subject_3"]
 
 # Find peaks
 peaks, info = nk.ecg_peaks(ekg_data["ECG"], sampling_rate=1000)
-
+# Herzschlag messen
 number_of_heartbeats = peaks["ECG_R_Peaks"].sum()
-
+# Ausdauer
 duration_test_min = ekg_data.size/1000/60
-
+# Durchschnitt rechnen
 average_hr_test = number_of_heartbeats / duration_test_min
 
 ## Calculate heart rate moving average
@@ -69,11 +71,11 @@ f = open(file_name)
 # a dictionary
 subject_data = json.load(f)
 
-
+# Maximum herausfinden
 maximum_hr = peaks['average_HR_10s'].max()
 
 subject_max_hr = 220 - (2022 - subject_data["birth_year"])
-
+# Wenn das Maximum erreicht ist, wird der Vorgang beendet
 if maximum_hr > subject_max_hr*0.90:
     termination = True
 

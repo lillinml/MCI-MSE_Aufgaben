@@ -83,13 +83,15 @@ if maximum_hr > subject_max_hr*0.90:
 
 #%% UC 2.4 Erstellen einer Zusammenfassung
 ## Ausgabe der zusammengefassten Daten des Patienten
+def print_summary():
+    ("Summary for Subject " + str(subject_data["subject_id"]))
+    ("Year of birth:  " + str(subject_data["birth_year"]))
+    ("Test level power in W:  " + str(subject_data["test_power_w"]))
+    (" \n")
+    ("Maximum HR was: " + str(maximum_hr))
+    ("Was test terminated because exceeding HR " + str(termination))
+print_summary()
 
-    print("Summary for Subject " + str(subject_data["subject_id"]))
-    print("Year of birth:  " + str(subject_data["birth_year"]))
-    print("Test level power in W:  " + str(subject_data["test_power_w"]))
-    print(" \n")
-    print("Maximum HR was: " + str(maximum_hr))
-    print("Was test terminated because exceeding HR " + str(termination))
 
 #%% UC 2.5 Visualisierung der Daten
 ## Öffnen der Leistungsdaten

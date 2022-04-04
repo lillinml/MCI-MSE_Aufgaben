@@ -59,8 +59,7 @@ def preprocess_test_data():
 peaks,number_of_heartbeats, duration_test_min, average_hr_tests_min = preprocess_test_data()
 
 #%% UC 2.3 Analysieren der Daten auf Abbruch-Kriterium
-
-    termination = False
+termination = False
 
 ## Vergleich der Maximalen Herzfrequenz mit Alter des Patienten
 folder_input_data = os.path.join(folder_current, 'input_data')
@@ -84,12 +83,12 @@ if maximum_hr > subject_max_hr*0.90:
 #%% UC 2.4 Erstellen einer Zusammenfassung
 ## Ausgabe der zusammengefassten Daten des Patienten
 def print_summary():
-    ("Summary for Subject " + str(subject_data["subject_id"]))
-    ("Year of birth:  " + str(subject_data["birth_year"]))
-    ("Test level power in W:  " + str(subject_data["test_power_w"]))
-    (" \n")
-    ("Maximum HR was: " + str(maximum_hr))
-    ("Was test terminated because exceeding HR " + str(termination))
+    print("Summary for Subject " + str(subject_data["subject_id"]))
+    print("Year of birth:  " + str(subject_data["birth_year"]))
+    print("Test level power in W:  " + str(subject_data["test_power_w"]))
+    print(" \n")
+    print("Maximum HR was: " + str(maximum_hr))
+    print("Was test terminated because exceeding HR " + str(termination))
 print_summary()
 
 
@@ -97,27 +96,23 @@ print_summary()
 ## Öffnen der Leistungsdaten
 # Opening JSON file
 
-folder_input_data = os.path.join(folder_current, 'input_data')
-file_name =  os.path.join(folder_input_data, 'power_data_3.txt')
-power_data_watts = open(file_name).read().split("\n")
-power_data_watts.pop(-1)
-len(power_data_watts)
-
+def plot_data():
 # %%
 ## Erstellung eines Plots
 #peaks['average_HR_10s'].plot()
+<<<<<<< HEAD
 def plot_data():
-    "Hier werden Daten zusammengefasst ausgegeben und geplottet"
+    
     peaks_downsampled = peaks[peaks.index % 1000 == 0]  
     peaks_downsampled = peaks_downsampled.reset_index(drop=True)
     peaks_downsampled = peaks_downsampled.drop(["ECG_R_Peaks"],axis=1)
+    peaks_downsampled
     peaks_downsampled["Power (Watt)"] = pd.to_numeric(power_data_watts)
     peaks_downsampled["Power (Watt)"] = peaks_downsampled["Power (Watt)"]
-
     peaks_downsampled.plot()
-    peaks_downsampled["Power (Watt)"].plot()
 
-_plot_data()
+plot_data()
+#peaks_downsampled["Power (Watt)"].plot()
 #%% UC 2.6 Manuelle Eingabe eines Abbruchkritierums
 
 ## Abfrage an Nutzer:in, ob Abgebrochen werden soll

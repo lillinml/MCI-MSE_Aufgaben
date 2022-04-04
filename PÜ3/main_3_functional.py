@@ -60,7 +60,7 @@ peaks,number_of_heartbeats, duration_test_min, average_hr_tests_min = preprocess
 
 #%% UC 2.3 Analysieren der Daten auf Abbruch-Kriterium
 
-termination = False
+    termination = False
 
 ## Vergleich der Maximalen Herzfrequenz mit Alter des Patienten
 folder_input_data = os.path.join(folder_current, 'input_data')
@@ -82,15 +82,14 @@ if maximum_hr > subject_max_hr*0.90:
     termination = True
 
 #%% UC 2.4 Erstellen einer Zusammenfassung
+## Ausgabe der zusammengefassten Daten des Patienten
 
-print("Summary for Subject " + str(subject_data["subject_id"]))
-print("Year of birth:  " + str(subject_data["birth_year"]))
-print("Test level power in W:  " + str(subject_data["test_power_w"]))
-print(" \n")
-print("Maximum HR was: " + str(maximum_hr))
-print("Was test terminated because exceeding HR " + str(termination))
-
-## Ausgabe einer Zusammenfassung
+    print("Summary for Subject " + str(subject_data["subject_id"]))
+    print("Year of birth:  " + str(subject_data["birth_year"]))
+    print("Test level power in W:  " + str(subject_data["test_power_w"]))
+    print(" \n")
+    print("Maximum HR was: " + str(maximum_hr))
+    print("Was test terminated because exceeding HR " + str(termination))
 
 #%% UC 2.5 Visualisierung der Daten
 ## Öffnen der Leistungsdaten
@@ -102,18 +101,14 @@ power_data_watts = open(file_name).read().split("\n")
 power_data_watts.pop(-1)
 len(power_data_watts)
 
-
 # %%
 ## Erstellung eines Plots
 #peaks['average_HR_10s'].plot()
-
+def 
 peaks_downsampled = peaks[peaks.index % 1000 == 0]  
-
 peaks_downsampled = peaks_downsampled.reset_index(drop=True)
 peaks_downsampled = peaks_downsampled.drop(["ECG_R_Peaks"],axis=1)
 peaks_downsampled
-
-
 peaks_downsampled["Power (Watt)"] = pd.to_numeric(power_data_watts)
 #peaks_downsampled["Power (Watt)"] = peaks_downsampled["Power (Watt)"]
 peaks_downsampled.plot()

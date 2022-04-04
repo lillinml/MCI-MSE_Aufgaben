@@ -106,18 +106,20 @@ len(power_data_watts)
 # %%
 ## Erstellung eines Plots
 #peaks['average_HR_10s'].plot()
-def 
-peaks_downsampled = peaks[peaks.index % 1000 == 0]  
-peaks_downsampled = peaks_downsampled.reset_index(drop=True)
-peaks_downsampled = peaks_downsampled.drop(["ECG_R_Peaks"],axis=1)
-peaks_downsampled
-peaks_downsampled["Power (Watt)"] = pd.to_numeric(power_data_watts)
-#peaks_downsampled["Power (Watt)"] = peaks_downsampled["Power (Watt)"]
-peaks_downsampled.plot()
+def plot_data():
+    "Hier werden Daten zusammengefasst ausgegeben und geplottet"
+    peaks_downsampled = peaks[peaks.index % 1000 == 0]  
+    peaks_downsampled = peaks_downsampled.reset_index(drop=True)
+    peaks_downsampled = peaks_downsampled.drop(["ECG_R_Peaks"],axis=1)
+    peaks_downsampled["Power (Watt)"] = pd.to_numeric(power_data_watts)
+    peaks_downsampled["Power (Watt)"] = peaks_downsampled["Power (Watt)"]
 
-#peaks_downsampled["Power (Watt)"].plot()
+    peaks_downsampled.plot()
+    peaks_downsampled["Power (Watt)"].plot()
 
+_plot_data()
 #%% UC 2.6 Manuelle Eingabe eines Abbruchkritierums
+
 ## Abfrage an Nutzer:in, ob Abgebrochen werden soll
 
 manual_termination  = False
@@ -133,7 +135,7 @@ if manual_termination != False:
 
     json_data_to_save = json.dumps(data)
     folder_current = os.path.dirname(__file__) 
-    folder_input_data = os.path.join(folder_current, 'result_data')
+    folder_input_data = os.path.join(folder_current, "result_data")
     results_file = os.path.join(folder_input_data, 'data.json')
 
     with open(results_file, 'w', encoding='utf-8') as f:

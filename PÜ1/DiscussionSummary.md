@@ -65,6 +65,8 @@ Paralell zu der erbrachten Leistung des Patienten wurde die Herzfrequenz gemesse
 
 Die Daten wurden mithilfe von Matplot grafisch dargestellt.
 
+*Gut, allerdings ergebene EKG-Daten keinen Sinusverlauf. Die Einheit der EKG Messung ist mV, wäre noch wünschenswert. -YS*
+
 ### Design and implementation constraints
 
 

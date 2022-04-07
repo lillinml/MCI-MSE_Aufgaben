@@ -1,0 +1,12 @@
+{
+    "Test ID": "3",
+    "Test": {
+        "User ID": "3",
+        "Reason for test termation": "",
+        "Average Heart Rate": 133.33333333333334,
+        "Maximum Heart Rate": 186.0,
+        "Test Length (s)": 180,
+        "Test Power (W)": 300,
+        "Path to Graph": "result_data/figure_3.png"
+    }
+}

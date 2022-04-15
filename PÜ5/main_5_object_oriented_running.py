@@ -34,6 +34,7 @@ for file in os.listdir(folder_input_data):
 # %% Programmablauf
 
 iterator = 0                                        # Zähler, der die gefundenen Dateien und damit Tests zählt
+list_of_new_tests = []
 
 for test in list_of_new_tests:                      # Alle Tests werden nacheinander durchlaufen
     test.create_hr_data()                           # Erstelle Herzraten aus den EKG-Daten
@@ -45,7 +46,6 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
     test.ask_for_termination()
     test.save_data()
 
-#klasse erstellen
  def create_hr_data(self):
         """
         Load a dataframe of ecg_data to add additional attributes to the test object
@@ -71,25 +71,25 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
 
         #self.peaks['average_HR_10s'].plot()
 
-    def add_subject(self, Subject):
+def add_subject(self, Subject):
         """
         Add a subject to the test object
         """
         self.subject = Subject
 
-    def add_power_data(self, PowerData):
+def add_power_data(self, PowerData):
         """
         Add a power data to the test object
         """
         self.power_data = PowerData
 
-    def add_power_data(self, PowerData):
+def add_power_data(self, PowerData):
         """
         Add a power data to the test object
         """
         self.power_data = PowerData
 
-    def evaluate_termination(self):
+def evaluate_termination(self):
         """
         Evaluate the automatic termination of the test
         """
@@ -98,7 +98,7 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
             self.terminated = True
             return self.terminated
 
-    def create_summary(self):
+def create_summary(self):
         """
         create a summary of the test and print it to the console
         """
@@ -112,7 +112,7 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
         print("________________")
         print(" \n")
     
-        def create_plot(self):
+def create_plot(self):
         """
         Create a plot of the test
         """
@@ -123,7 +123,7 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
         self.plot_data["Power (Watt)"] = pd.to_numeric(self.power_data.power_data_watts)
         self.plot_data.plot()
 
-        def ask_for_termination(self):
+def ask_for_termination(self):
         """
         Ask the diagnostician if the test should be terminated
         """
@@ -133,7 +133,7 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
         if self.manual_termination != False:
             self.termination = True
         
-        def save_data(self):
+def save_data(self):
         """
         Store the test data in a JSON file
         """
@@ -148,38 +148,7 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
         with open(__results_file, 'w', encoding='utf-8') as f:
             json.dump(__data, f, ensure_ascii=False, indent=4)
 
-
-#Class Test
-class Subject():
-    """
-    Test-Subject with the following attributes:
-
-    - birth_year: int
-    - age: int
-    - subject_max_hr: int
-    - subject_id: int
-    - test_power_w: int
-
-    """
-    def __init__(self, file_name):
-        """
-        Initialize the Subject-Object with the following attributes:	
-        - birth_year: int
-        - age: int
-        - subject_max_hr: int
-        - subject_id: int
-        - test_power_w: int
-    
-        """
-        file = open(file_name)
-        __subject_data = json.load(file)
-        self.birth_year = __subject_data["birth_year"]        
-        self.age = 2022 - self.birth_year
-        self.subject_max_hr = 220 - (2022 - __subject_data["birth_year"])
-        self.subject_id = __subject_data["subject_id"]
-        self.test_power_w = __subject_data["test_power_w"]
-
-    iterator = iterator + 1
+iterator = iterator + 1
 
 
 

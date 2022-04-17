@@ -4,8 +4,16 @@
 import pandas as pd
 import neurokit2 as nk
 import json
+import logging as log
 
 # %%
+#logger = log.getlogger("log_file")
+#log.basicConfig(filename = "logfile.log", level=log.INFO, format="%(asctime)s - %(message)s", datefmt="%d-%b-%y %H:%M:%S")
+
+logger = logging.getlogger()
+logging.basicConfig(filename="main_4_access.log", format="%(asctime)s %(message)s")
+logger.setLevel(logging.INFO)
+
 # Definition of Classes
 
 ## Class Test
@@ -224,13 +232,19 @@ iterator = 0                                        # Zähler, der die gefundene
 for test in list_of_new_tests:                      # Alle Tests werden nacheinander durchlaufen
     test.create_hr_data()                           # Erstelle Herzraten aus den EKG-Daten
     test.add_subject(list_of_subjects[iterator])    # Fügt einem Test die passenden Versuchspersonen hinzu
-
+    test.add_power_data(list_of_power_data[iterator])
+    test.evaluate_termination()
+    test.create_plot()
+    test.ask_for_termination()
+    test.save_data()
+    test.create_summary()
     """
     Fügen Sie hier den Programmablauf ein, indem Sie die Methoden und Klassen von oben nutzen
     """
 
     iterator = iterator + 1
 
+    #log.info("Data of Subject-id: %s has been loaded", str(iterator))
 
 # %% Eigentlich Ablauf der Event-Pipeline
 
@@ -361,7 +375,8 @@ def ask_for_termination(self):
         Ask the diagnostician if the test should be terminated
         """
         self.manual_termination = False
-        self.manual_termination = input("Is this test invalid? (leave blank if valid): ")
+        self.manual_
+        termination = input("Is this test invalid? (leave blank if valid): ")
 
         if self.manual_termination != False:
             self.termination = True

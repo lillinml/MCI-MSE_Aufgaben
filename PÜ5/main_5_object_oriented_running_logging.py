@@ -151,7 +151,9 @@ class Test:
         print("Maximum HR was: " + str(self.maximum_hr))
         print("Was test terminated because exceeding HR: " + str(self.terminated))
         print("Was test terminated because for other reasons: " + str(self.manual_termination))
-
+        print("Durchschnitt: " + str(self.average_hr_test))
+        print("Varianz: " + str(self.varianz))
+        
         print("________________")
         print(" \n")
 
@@ -263,3 +265,5 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
 
     iterator = iterator + 1
     
+
+# %%

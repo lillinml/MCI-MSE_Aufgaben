@@ -51,6 +51,8 @@ class Subject():
         self.subject_max_hr = 220 - (2022 - __subject_data["birth_year"])
         self.subject_id = __subject_data["subject_id"]
         self.test_power_w = __subject_data["test_power_w"]
+        
+        logging.info('Data of Subject {}{}'.format(self.subject_id,'has been loaded'))
 
 class PowerData():
     """
@@ -121,6 +123,9 @@ class Test:
         
         self.maximum_hr = self.hr_peaks['average_HR_10s'].max()
 
+        hrv_time = nk.hrv_time(self.hr_peaks, sampling_rate = 100000, show=True)
+        self.varianz = hrv_time["HRV_MeanNN"].values[0]
+
         #self.peaks['average_HR_10s'].plot()
 
     def evaluate_termination(self):
@@ -168,6 +173,8 @@ class Test:
         if self.manual_termination != False:
             self.termination = True
         
+        if str(self.manual_termination) != (''):
+            logging.info('Test of Subject {} has been marked as invalid because of {}'.format(self.subject_id, self.manual_termination))
 
     def create_plot(self):
         """
@@ -223,7 +230,7 @@ list_of_power_data = []
 ### Füllen der Liste mit vorhandenen Daten
 
 import os
-from re import I
+from re import I, T
 import pandas as pd
 
 folder_current = os.path.dirname(__file__) 

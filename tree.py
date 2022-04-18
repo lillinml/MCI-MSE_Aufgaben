@@ -11,7 +11,7 @@ class TreeNode:
     
     def add_child(self, child):
         child.parent = self
-        self.children.append(child)
+        children.append(child)
 
 
     def get_level(self):

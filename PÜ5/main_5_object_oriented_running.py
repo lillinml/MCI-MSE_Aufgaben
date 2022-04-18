@@ -1,38 +1,35 @@
-from statistics import variance
+# %%
+# Import external packages
+
 import pandas as pd
 import neurokit2 as nk
 import json
-import matplotlib as mpl 
+import logging as log
 import matplotlib.pyplot as plt
 
+#%%
+# Log File
+logger = log.getLogger('log_file')
+
+log.basicConfig(filename='main_5_object_oriented_running_logging.log', level=log.INFO, format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+#1 Information
+#2 Time
+
+
+
+
 # %%
-#logger = log.getlogger("log_file")
-#log.basicConfig(filename = "logfile.log", level=log.INFO, format="%(asctime)s - %(message)s", datefmt="%d-%b-%y %H:%M:%S")
-
-#logger = logging.getlogger()
-#logging.basicConfig(filename="main_4_access.log", format="%(asctime)s %(message)s")
-#logger.setLevel(logging.INFO)
-
-import logging
-Log_format = "%(levelname)s:%(asctime)s:%(message)s"
-logging.basicConfig(filename = "logfile.logg",
-                    filemode = "w",
-                    format = Log_format,
-                    level = logging.INFO)
-
 # Definition of Classes
 
 ## Class Test
 class Subject():
     """
     Test-Subject with the following attributes:
-
     - birth_year: int
     - age: int
     - subject_max_hr: int
     - subject_id: int
     - test_power_w: int
-
     """
     def __init__(self, file_name):
         """
@@ -51,8 +48,6 @@ class Subject():
         self.subject_max_hr = 220 - (2022 - __subject_data["birth_year"])
         self.subject_id = __subject_data["subject_id"]
         self.test_power_w = __subject_data["test_power_w"]
-        
-        logging.info('Data of Subject {}{}'.format(self.subject_id,'has been loaded'))
 
 class PowerData():
     """
@@ -84,10 +79,9 @@ class Test:
     - terminated: bool
     - maximum_hr: int
     - average_hr_test: int
+    - variance_hr_test: int
     - duration_test_min: int
     - number_of_heartbeats: int
-
-
     """
     def __init__(self, file_name):
         """
@@ -103,7 +97,6 @@ class Test:
     def create_hr_data(self):
         """
         Load a dataframe of ecg_data to add additional attributes to the test object
-
         """
 
         self.ecg_data["ECG"] = self.ecg_data.iloc[:, [1]]
@@ -123,8 +116,11 @@ class Test:
         
         self.maximum_hr = self.hr_peaks['average_HR_10s'].max()
 
-        hrv_time = nk.hrv_time(self.hr_peaks, sampling_rate = 100000, show=True)
-        self.varianz = hrv_time["HRV_MeanNN"].values[0]
+        #self.variance_hr = self.hr_peaks["average_HR_10s"].var()
+
+        ## Calculate heart rate variance
+        self.hrv_time = nk.hrv_time(self.hr_peaks, sampling_rate=1000)
+        self.variance_hr = self.hrv_time['HRV_MeanNN'].values[0]
 
         #self.peaks['average_HR_10s'].plot()
 
@@ -157,6 +153,8 @@ class Test:
         print("Year of birth:  " + str(self.subject.birth_year))
         print("Test level power in W:  " + str(self.subject.test_power_w))
         print("Maximum HR was: " + str(self.maximum_hr))
+        print("Average HR was: " + str(self.average_hr_test))
+        print("Variance HR was: " + str(self.variance_hr))
         print("Was test terminated because exceeding HR: " + str(self.terminated))
         print("Was test terminated because for other reasons: " + str(self.manual_termination))
 
@@ -170,11 +168,13 @@ class Test:
         self.manual_termination = False
         self.manual_termination = input("Is this test invalid? (leave blank if valid): ")
 
-        if self.manual_termination != False:
+        if self.manual_termination != '': # wenn manueller abbruch freigelassen dann ist der Test gültig
             self.termination = True
+            log.info('Test with subject-id: %s was invalid', self.subject_id) #log für manuellen Abbruch
+
+
         
-        if str(self.manual_termination) != (''):
-            logging.info('Test of Subject {} has been marked as invalid because of {}'.format(self.subject_id, self.manual_termination))
+        
 
     def create_plot(self):
         """
@@ -183,9 +183,29 @@ class Test:
         self.plot_data = pd.DataFrame()
         self.plot_data["Heart Rate"] = self.hr_peaks[self.ecg_data.index % 1000 == 0]["average_HR_10s"]  
         self.plot_data = self.plot_data.reset_index(drop=True)
-
         self.plot_data["Power (Watt)"] = pd.to_numeric(self.power_data.power_data_watts)
         self.plot_data.plot()
+
+    def create_nice_plot(self):
+
+        """
+        Create a lovley plot that looks awesome.
+        """      
+        hr = self.hr_peaks[self.ecg_data.index % 1000 == 0]["average_HR_10s"]
+        hr = hr.reset_index(drop=True)
+        watts = pd.to_numeric(self.power_data.power_data_watts)
+        ax1 = plt.subplot(211)
+        ax1.plot(hr,color='red')
+        plt.grid(True)
+        plt.title("Performance Test")
+        plt.ylabel("Heart Rate [bpm]")
+        ax2 = plt.subplot(212)
+        ax2.plot(watts,color='green')
+        plt.xlabel("time [s]")
+        plt.ylabel("Power [watts]")
+        plt.grid(True)      
+        plt.savefig('Evaluation Subject {}'.format(self.subject_id))
+
     
 
     def save_data(self):
@@ -193,6 +213,29 @@ class Test:
         Store the test data in a JSON file
         """
         __data = {"User ID": self.subject_id, "Reason for test termation": self.manual_termination, "Average Heart Rate": self.average_hr_test, "Maximum Heart Rate": self.maximum_hr, "Test Length (s)": self.power_data.duration_s, "Test Power (W)": self.subject.test_power_w}
+
+        __folder_current = os.path.dirname(__file__)
+        __folder_input_data = os.path.join(__folder_current, 'result_data')
+        
+        __file_name = 'result_data_subject' + str(self.subject_id) +'.json'
+        __results_file = os.path.join(__folder_input_data, __file_name)
+
+        with open(__results_file, 'w', encoding='utf-8') as f:
+            json.dump(__data, f, ensure_ascii=False, indent=4)
+
+    def save_data_baum(self):
+        """
+        Store the test data in a JSON File with a tree structure
+        """
+        __data = {"User ID": self.subject_id,
+            Test: {
+                "Reason for test termation": self.manual_termination,
+                "Average Heart Rate": self.average_hr_test,
+                "Maximum Heart Rate": self.maximum_hr,
+                "Test Length (s)": self.power_data.duration_s,
+                "Test Power (W)": self.subject.test_power_w
+                }
+        }
 
         __folder_current = os.path.dirname(__file__) 
         __folder_input_data = os.path.join(__folder_current, 'result_data')
@@ -203,17 +246,8 @@ class Test:
         with open(__results_file, 'w', encoding='utf-8') as f:
             json.dump(__data, f, ensure_ascii=False, indent=4)
 
-    def save_data(self):
-        """
-        Store the test data in a JSON file
-        """
-        __data = {"User ID": self.subject_id, "Reason for test termination": self.manual_termination, "Average Heart Rate": self.average_hr_test, "Maximum Heart Rate": self.maximum_hr, "Test Length (s)": self.power_data.duration_s, "Test Power (W)": self.subject.test_power_w}
-        __folder_current = os.path.dirname(__file__)
-        __folder_input_data = os.path.join(__folder_current, 'result_data')
-        __file_name = 'result_data_subject' + str(self.subject_id) +'json'
-        __results_file = os.path.join(__folder_input_data, __file_name)
-        with open(__result_file, 'w', encoding='utf-8') as f:
-            json.dump(__data, f, ensure_ascii=False, indent=4)
+
+
 
 
 
@@ -230,7 +264,7 @@ list_of_power_data = []
 ### Füllen der Liste mit vorhandenen Daten
 
 import os
-from re import I, T
+from re import I
 import pandas as pd
 
 folder_current = os.path.dirname(__file__) 
@@ -258,12 +292,13 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
     test.add_power_data(list_of_power_data[iterator])
     test.evaluate_termination()
     test.create_plot()
-    test.ask_for_termination()
     test.create_summary()
+    test.ask_for_termination()
     test.save_data()
-    
-    """
-    Fügen Sie hier den Programmablauf ein, indem Sie die Methoden und Klassen von oben nutzen
-    """
+    test.create_nice_plot()
+   # test.save_data_baum()
 
     iterator = iterator + 1
+
+    log.info('Data of Subject-id: %s has been loaded', str(iterator))      
+    

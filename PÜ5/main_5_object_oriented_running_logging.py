@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 import logging
 Log_format = "%(levelname)s:%(asctime)s:%(message)s"
-logging.basicConfig(filename = "logfile.logg",
+logging.basicConfig(filename = "main_5_object_oriented_running_logging.logg",
                     filemode = "w",
                     format = Log_format,
                     level = logging.INFO)

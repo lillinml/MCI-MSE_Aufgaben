@@ -407,15 +407,3 @@ def save_data(self):
             json.dump(__data, f, ensure_ascii=False, indent=4)
 
 iterator = iterator + 1
-
-
-
-
-
- #Aufgabenstellung 3 Logfile erstellen
-
- #import logging
-
-#logging.basicConfig(filename="main_5_object_oriented_running_logging.txt", level=logging.INFO, format="%(asctime)s %(filename)s %(message)s"))
-
-#logging.info("Uhrzeit",)

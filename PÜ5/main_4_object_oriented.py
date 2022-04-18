@@ -1,18 +1,27 @@
 # %%
 # Import external packages
 
+from statistics import variance
 import pandas as pd
 import neurokit2 as nk
 import json
-import logging as log
+import matplotlib as mpl 
+import matplotlib.pyplot as plt
 
 # %%
 #logger = log.getlogger("log_file")
 #log.basicConfig(filename = "logfile.log", level=log.INFO, format="%(asctime)s - %(message)s", datefmt="%d-%b-%y %H:%M:%S")
 
-logger = logging.getlogger()
-logging.basicConfig(filename="main_4_access.log", format="%(asctime)s %(message)s")
-logger.setLevel(logging.INFO)
+#logger = logging.getlogger()
+#logging.basicConfig(filename="main_4_access.log", format="%(asctime)s %(message)s")
+#logger.setLevel(logging.INFO)
+
+import logging
+Log_format = "%(levelname)s:%(asctime)s:%(message)s"
+logging.basicConfig(filename = "logfile.logg",
+                    filemode = "w",
+                    format = Log_format,
+                    level = logging.INFO)
 
 # Definition of Classes
 
@@ -236,8 +245,9 @@ for test in list_of_new_tests:                      # Alle Tests werden nacheina
     test.evaluate_termination()
     test.create_plot()
     test.ask_for_termination()
-    test.save_data()
     test.create_summary()
+    test.save_data()
+    
     """
     Fügen Sie hier den Programmablauf ein, indem Sie die Methoden und Klassen von oben nutzen
     """

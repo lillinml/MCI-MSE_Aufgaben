@@ -196,7 +196,17 @@ class Test:
         with open(__results_file, 'w', encoding='utf-8') as f:
             json.dump(__data, f, ensure_ascii=False, indent=4)
 
-
+    def save_data(self):
+        """
+        Store the test data in a JSON file
+        """
+        __data = {"User ID": self.subject_id, "Reason for test termination": self.manual_termination, "Average Heart Rate": self.average_hr_test, "Maximum Heart Rate": self.maximum_hr, "Test Length (s)": self.power_data.duration_s, "Test Power (W)": self.subject.test_power_w}
+        __folder_current = os.path.dirname(__file__)
+        __folder_input_data = os.path.join(__folder_current, 'result_data')
+        __file_name = 'result_data_subject' + str(self.subject_id) +'json'
+        __results_file = os.path.join(__folder_input_data, __file_name)
+        with open(__result_file, 'w', encoding='utf-8') as f:
+            json.dump(__data, f, ensure_ascii=False, indent=4)
 
 
 
